@@ -1,11 +1,11 @@
 import express from 'express';
 import { createHandler } from 'graphql-http/lib/use/express';
-import { allAnimalsSchema } from './animals/schemas/animals.schema';
+import { executableSchema } from './animals/schemas/animals.schema';
 
 // Create a express instance serving all methods on `/graphql`
 // where the GraphQL over HTTP express request handler is
 const app = express();
-app.all('/graphql', createHandler({ schema: allAnimalsSchema }));
+app.all('/graphql', createHandler({ schema: executableSchema }));
 
 const port = 3000;
 

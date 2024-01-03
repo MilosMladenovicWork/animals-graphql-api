@@ -1,20 +1,31 @@
-import { GraphQLObjectType, GraphQLSchema, GraphQLString } from 'graphql';
+import { makeExecutableSchema } from '@graphql-tools/schema';
 
-/**
- * Construct a GraphQL schema and define the necessary resolvers.
- *
- * type Query {
- *   hello: String
- * }
- */
-export const allAnimalsSchema = new GraphQLSchema({
-  query: new GraphQLObjectType({
-    name: 'allAnimals',
-    fields: {
-      name: {
-        type: GraphQLString,
-        resolve: () => 'Cat',
-      },
-    },
-  }),
+export const data = {
+  animals: [
+    { id: '001', name: 'Cat' },
+    { id: '002', name: 'Dog' },
+  ],
+};
+
+const typeDefs = `
+type Animal {
+  id: ID!
+  name: String!
+}
+
+type Query {
+  allAnimals: [Animal]
+}
+`;
+
+const resolvers = {
+  Query: {
+    allAnimals: (_obj: any, _args: any, _context: any, _info: any) =>
+      data.animals,
+  },
+};
+
+export const executableSchema = makeExecutableSchema({
+  typeDefs,
+  resolvers,
 });
