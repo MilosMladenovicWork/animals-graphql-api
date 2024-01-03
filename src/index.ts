@@ -1,12 +1,13 @@
-import express, { Express, Request, Response } from 'express';
+import express from 'express';
+import { createHandler } from 'graphql-http/lib/use/express';
+import { allAnimalsSchema } from './animals/schemas/animals.schema';
 
-const app: Express = express();
+// Create a express instance serving all methods on `/graphql`
+// where the GraphQL over HTTP express request handler is
+const app = express();
+app.all('/graphql', createHandler({ schema: allAnimalsSchema }));
+
 const port = 3000;
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Typescript enabled');
-});
-
-app.listen(port, () => {
-  console.log(`[server]: Server is running at http://localhost:${port}`);
-});
+app.listen({ port });
+console.log(`Listening to port: ${port}`);
