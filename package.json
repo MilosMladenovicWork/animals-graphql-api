@@ -5,6 +5,7 @@
     "dev": "nodemon src/index.ts"
   },
   "dependencies": {
+    "@graphql-tools/resolvers-composition": "^7.0.0",
     "@graphql-tools/schema": "^10.0.2",
     "express": "^4.18.2",
     "graphql-http": "^1.22.0"

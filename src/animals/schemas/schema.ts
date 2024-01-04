@@ -1,4 +1,6 @@
+import { composeResolvers } from '@graphql-tools/resolvers-composition';
 import { makeExecutableSchema } from '@graphql-tools/schema';
+import { requestLogger } from '../../common/middleware/request-logger.middleware';
 import { allAnimalsResolver } from '../resolvers/all-animals.resolver';
 import { animalResolver } from '../resolvers/animal.resolver';
 import { createAnimalResolver } from '../resolvers/create-animal.resolver';
@@ -29,7 +31,15 @@ const resolvers = {
   },
 };
 
+const resolversComposition = {
+  'Query.animal': [requestLogger()],
+  'Query.allAnimals': [requestLogger()],
+  'Mutation.createAnimal': [requestLogger()],
+};
+
+const composedResolvers = composeResolvers(resolvers, resolversComposition);
+
 export const executableSchema = makeExecutableSchema({
   typeDefs,
-  resolvers,
+  resolvers: composedResolvers,
 });
