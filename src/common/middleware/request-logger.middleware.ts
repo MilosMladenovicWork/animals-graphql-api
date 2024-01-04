@@ -5,5 +5,5 @@ export const requestLogger =
     console.log(context);
     console.log(info);
 
-    next(obj, args, context, info);
+    return next(obj, args, context, info);
   };
