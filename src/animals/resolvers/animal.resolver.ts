@@ -2,7 +2,7 @@ import { animalsData } from '../data/animals.data';
 
 export const animalResolver = (
   _obj: any,
-  _args: any,
+  args: any,
   _context: any,
   _info: any
-) => animalsData.animals[0];
+) => animalsData.animals.find((animal) => animal.id === args.id) ?? null;

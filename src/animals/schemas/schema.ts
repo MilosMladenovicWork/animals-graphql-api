@@ -10,7 +10,7 @@ type Animal {
 
 type Query {
   allAnimals: [Animal]
-  animal: Animal
+  animal(id: ID!): Animal
 }
 `;
 

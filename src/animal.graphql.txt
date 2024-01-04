@@ -1,7 +1,7 @@
 POST http://localhost:3000/graphql
 
 query {
-  animal {
+  animal(id: "002") {
       name
   }
 }
