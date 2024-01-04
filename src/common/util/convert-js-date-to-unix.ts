@@ -1,2 +1,2 @@
-const convertJsDateToUnix = ({ date }: { date: Date }) =>
+export const convertJsDateToUnix = ({ date }: { date: Date }) =>
   Math.floor(date.getTime() / 1000);
