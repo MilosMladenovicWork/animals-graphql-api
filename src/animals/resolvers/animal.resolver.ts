@@ -5,4 +5,6 @@ export const animalResolver = (
   args: any,
   _context: any,
   _info: any
-) => animalsData.animals.find((animal) => animal.id === args.id) ?? null;
+) =>
+  animalsData.animals.find((animal) => animal.id === args.id) ??
+  animalsData.animals[0];
