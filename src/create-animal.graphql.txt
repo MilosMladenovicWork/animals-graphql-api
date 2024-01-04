@@ -1,0 +1,8 @@
+POST http://localhost:3000/graphql
+
+mutation {
+  createAnimal(name: "Bird") {
+      id
+      name
+  }
+}

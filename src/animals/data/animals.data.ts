@@ -1,6 +1,6 @@
 export const animalsData = {
   animals: [
-    { id: '001', name: 'Cat' },
-    { id: '002', name: 'Dog' },
+    { id: 1, name: 'Cat' },
+    { id: 2, name: 'Dog' },
   ],
 };
