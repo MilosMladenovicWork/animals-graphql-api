@@ -1,5 +1,6 @@
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { allAnimalsResolver } from '../resolvers/all-animals.resolver';
+import { animalResolver } from '../resolvers/animal.resolver';
 
 const typeDefs = `
 type Animal {
@@ -9,11 +10,13 @@ type Animal {
 
 type Query {
   allAnimals: [Animal]
+  animal: Animal
 }
 `;
 
 const resolvers = {
   Query: {
+    animal: animalResolver,
     allAnimals: allAnimalsResolver,
   },
 };
