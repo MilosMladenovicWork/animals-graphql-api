@@ -31,10 +31,12 @@ const resolvers = {
   },
 };
 
+const commonMiddleware = [requestLogger()];
+
 const resolversComposition = {
-  'Query.animal': [requestLogger()],
-  'Query.allAnimals': [requestLogger()],
-  'Mutation.createAnimal': [requestLogger()],
+  'Query.animal': [...commonMiddleware],
+  'Query.allAnimals': [...commonMiddleware],
+  'Mutation.createAnimal': [...commonMiddleware],
 };
 
 const composedResolvers = composeResolvers(resolvers, resolversComposition);
