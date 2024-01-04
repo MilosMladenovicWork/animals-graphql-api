@@ -1,7 +1,7 @@
 POST http://localhost:3000/graphql
 
-query {
-  allAnimals {
+mutation {
+  deleteAnimal(id: 1) {
       id
       name
   }

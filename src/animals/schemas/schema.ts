@@ -4,6 +4,7 @@ import { requestLogger } from '../../common/middleware/request-logger.middleware
 import { allAnimalsResolver } from '../resolvers/all-animals.resolver';
 import { animalResolver } from '../resolvers/animal.resolver';
 import { createAnimalResolver } from '../resolvers/create-animal.resolver';
+import { deleteAnimalResolver } from '../resolvers/delete-animal.resolver';
 
 const typeDefs = `
 type Animal {
@@ -18,6 +19,7 @@ type Query {
 
 type Mutation {
   createAnimal(name: String!): Animal
+  deleteAnimal(id: Int!): Animal
 }
 `;
 
@@ -28,6 +30,7 @@ const resolvers = {
   },
   Mutation: {
     createAnimal: createAnimalResolver,
+    deleteAnimal: deleteAnimalResolver,
   },
 };
 
@@ -37,6 +40,7 @@ const resolversComposition = {
   'Query.animal': [...commonMiddleware],
   'Query.allAnimals': [...commonMiddleware],
   'Mutation.createAnimal': [...commonMiddleware],
+  'Mutation.deleteAnimal': [...commonMiddleware],
 };
 
 const composedResolvers = composeResolvers(resolvers, resolversComposition);
