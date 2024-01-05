@@ -6,4 +6,10 @@ describe('Test delete-animal.resolver', () => {
 
     expect(data).toStrictEqual({ dateCreated: 1704398763, id: 1, name: 'Cat' });
   });
+
+  it('should return null when animal is not found', () => {
+    const data = deleteAnimalResolver(undefined, { id: 10000000 });
+
+    expect(data).toEqual(null);
+  });
 });
