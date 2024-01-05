@@ -1,4 +1,4 @@
-import { animalsData } from '../data/animals.data';
+import { animalsData } from '../../data/animals.data';
 
 export const updateAnimalResolver = (
   _obj: any,

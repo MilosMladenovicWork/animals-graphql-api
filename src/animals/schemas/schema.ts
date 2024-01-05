@@ -1,11 +1,11 @@
 import { composeResolvers } from '@graphql-tools/resolvers-composition';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { requestLogger } from '../../common/middleware/request-logger.middleware';
-import { allAnimalsResolver } from '../resolvers/all-animals.resolver';
-import { animalResolver } from '../resolvers/animal.resolver';
-import { createAnimalResolver } from '../resolvers/create-animal.resolver';
-import { deleteAnimalResolver } from '../resolvers/delete-animal.resolver';
-import { updateAnimalResolver } from '../resolvers/update-animal.resolver';
+import { allAnimalsResolver } from '../resolvers/all-animals/all-animals.resolver';
+import { animalResolver } from '../resolvers/animal/animal.resolver';
+import { createAnimalResolver } from '../resolvers/create-animal/create-animal.resolver';
+import { deleteAnimalResolver } from '../resolvers/delete-animal/delete-animal.resolver';
+import { updateAnimalResolver } from '../resolvers/update-animal/update-animal.resolver';
 
 const typeDefs = `
 type Animal {

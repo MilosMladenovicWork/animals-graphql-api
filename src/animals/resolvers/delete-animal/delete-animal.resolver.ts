@@ -1,4 +1,4 @@
-import { animalsData } from '../data/animals.data';
+import { animalsData } from '../../data/animals.data';
 
 export const deleteAnimalResolver = (_obj: any, { id }: { id: number }) => {
   const indexOfToBeDeletedAnimal = animalsData.animals.findIndex(
