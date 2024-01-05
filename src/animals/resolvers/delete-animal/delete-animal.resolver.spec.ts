@@ -12,4 +12,7 @@ describe('Test delete-animal.resolver', () => {
 
     expect(data).toEqual(null);
   });
+
+  // TODO: test if actual data has changed after deletion
+  // consider using mock
 });
