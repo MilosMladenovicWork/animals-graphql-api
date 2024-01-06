@@ -1,3 +1,3 @@
-import { animalsData } from '../../data/animals.data';
+import { animalRepository } from '../../repository/animal.repository';
 
-export const allAnimalsResolver = () => animalsData.animals;
+export const allAnimalsResolver = () => animalRepository.findAll();
