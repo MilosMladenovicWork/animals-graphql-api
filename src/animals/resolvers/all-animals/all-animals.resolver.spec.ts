@@ -10,6 +10,14 @@ describe('Test all-animals.resolver', () => {
     expect(findAllMethod).toHaveBeenCalledTimes(1);
   });
 
+  it('should call findAll repository without arguments', () => {
+    const findAllMethod = jest.spyOn(animalRepository, 'findAll');
+
+    allAnimalsResolver();
+
+    expect(findAllMethod).toHaveBeenCalledWith();
+  });
+
   it('should return all animals', () => {
     const animals = [
       { id: 1, name: 'Animal1', dateCreated: 123 },
