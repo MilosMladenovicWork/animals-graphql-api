@@ -1,17 +1,9 @@
-import { convertJsDateToUnix } from '../../../common/util/convert-js-date-to-unix';
-import { animalsData } from '../../data/animals.data';
+import { animalRepository } from '../../repository/animal.repository';
 
 export const createAnimalResolver = (_obj: any, { name }: { name: string }) => {
-  const biggestId = animalsData.animals[animalsData.animals.length - 1]?.id;
-  const id = biggestId !== undefined ? biggestId + 1 : 1;
+  const createdAnimal = animalRepository.create({ name });
 
-  const animal = {
-    id,
-    name,
-    dateCreated: convertJsDateToUnix({ date: new Date() }),
-  };
+  const savedAnimal = animalRepository.save({ animal: createdAnimal });
 
-  animalsData.animals.push(animal);
-
-  return animal;
+  return savedAnimal;
 };
