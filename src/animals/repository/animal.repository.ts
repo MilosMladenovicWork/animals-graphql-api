@@ -7,6 +7,10 @@ class AnimalRepository {
   findAll() {
     return this.animals;
   }
+
+  findOne({ id }: { id: number }) {
+    return this.animals.find((animal) => animal.id === id) ?? null;
+  }
 }
 
 export const animalRepository = new AnimalRepository();

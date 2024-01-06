@@ -1,5 +1,4 @@
-import { animalsData } from '../../data/animals.data';
+import { animalRepository } from '../../repository/animal.repository';
 
 export const animalResolver = (_: any, { id }: { id: number }) =>
-  animalsData.animals.find((animal) => animal.id === id) ??
-  animalsData.animals[0];
+  animalRepository.findOne({ id });
