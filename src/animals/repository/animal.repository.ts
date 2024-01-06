@@ -37,6 +37,25 @@ class AnimalRepository {
 
     return animal;
   }
+
+  deleteOne({ id }: { id: number }): Animal | null {
+    const indexOfToBeDeletedAnimal = this.animals.findIndex(
+      (animal) => id === animal.id
+    );
+
+    if (indexOfToBeDeletedAnimal === -1) {
+      return null;
+    }
+
+    const toBeDeletedAnimal = this.animals[indexOfToBeDeletedAnimal];
+
+    this.animals = [
+      ...this.animals.slice(0, indexOfToBeDeletedAnimal),
+      ...this.animals.slice(indexOfToBeDeletedAnimal + 1),
+    ];
+
+    return toBeDeletedAnimal;
+  }
 }
 
 export const animalRepository = new AnimalRepository();
