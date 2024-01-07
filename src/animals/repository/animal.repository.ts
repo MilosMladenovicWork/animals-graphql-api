@@ -5,7 +5,7 @@ type Animal = {
   name: string;
   dateCreated: number;
 };
-class AnimalRepository {
+export class AnimalRepository {
   private animals: Animal[] = [];
 
   findAll(): Animal[] {
