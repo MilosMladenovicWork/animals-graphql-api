@@ -8,6 +8,12 @@ describe('Test animal.repository', () => {
     expect(animalRepository.findAll()).toEqual([]);
   });
 
+  it('findOne should return null when animal is not found', () => {
+    const animalRepository = new AnimalRepository();
+
+    expect(animalRepository.findOne({ id: 1234 })).toEqual(null);
+  });
+
   it('create should create animal', () => {
     const animalRepository = new AnimalRepository();
 
