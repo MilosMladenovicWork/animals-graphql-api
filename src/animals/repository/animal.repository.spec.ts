@@ -48,4 +48,14 @@ describe('Test animal.repository', () => {
 
     expect(returnValue).toEqual(animal);
   });
+
+  it('save should save animal', () => {
+    const animalRepository = new AnimalRepository();
+
+    const animal = { id: 123, name: 'Animal', dateCreated: 1234 };
+
+    const returnValue = animalRepository.save({ animal });
+
+    expect(returnValue).toEqual(animalRepository.getAnimals()[0]);
+  });
 });
