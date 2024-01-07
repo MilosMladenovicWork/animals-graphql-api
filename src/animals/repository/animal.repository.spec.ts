@@ -14,6 +14,16 @@ describe('Test animal.repository', () => {
     expect(animalRepository.findOne({ id: 1234 })).toEqual(null);
   });
 
+  it('findOne should return animal when animal is found', () => {
+    const animalRepository = new AnimalRepository();
+
+    const animal = { id: 1234, name: 'Animal', dateCreated: 1234 };
+
+    animalRepository.save({ animal });
+
+    expect(animalRepository.findOne({ id: animal.id })).toEqual(animal);
+  });
+
   it('create should create animal', () => {
     const animalRepository = new AnimalRepository();
 
