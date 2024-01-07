@@ -55,6 +55,20 @@ describe('Test animal.repository', () => {
     expect(convertJsDateToUnixMock).toHaveBeenCalledTimes(2);
   });
 
+  it('create should generate correct ids', () => {
+    const animalRepository = new AnimalRepository();
+
+    const animal1 = animalRepository.create({ name: 'Animal1' });
+
+    animalRepository.save({ animal: animal1 });
+
+    expect(animal1.id).toBe(1);
+
+    const animal2 = animalRepository.create({ name: 'Animal2' });
+
+    expect(animal2.id).toBe(2);
+  });
+
   it('save should return saved animal', () => {
     const animalRepository = new AnimalRepository();
 
