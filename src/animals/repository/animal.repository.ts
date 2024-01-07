@@ -76,6 +76,10 @@ export class AnimalRepository {
 
     return toBeUpdatedAnimal;
   }
+
+  getAnimals() {
+    return this.animals;
+  }
 }
 
 export const animalRepository = new AnimalRepository();
