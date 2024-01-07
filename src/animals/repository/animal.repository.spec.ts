@@ -89,6 +89,20 @@ describe('Test animal.repository', () => {
     expect(returnValue).toEqual(animalRepository.getAnimals()[0]);
   });
 
+  it('save should save animals in correct order', () => {
+    const animalRepository = new AnimalRepository();
+
+    const animal1 = { id: 1, name: 'Animal1', dateCreated: 1234 };
+
+    const animal2 = { id: 1, name: 'Animal1', dateCreated: 1234 };
+
+    animalRepository.save({ animal: animal1 });
+
+    animalRepository.save({ animal: animal2 });
+
+    expect(animalRepository.getAnimals()).toEqual([animal1, animal2]);
+  });
+
   it('getAnimals should return empty array on repository instantiation', () => {
     const animalRepository = new AnimalRepository();
 
