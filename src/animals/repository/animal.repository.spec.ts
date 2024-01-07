@@ -38,4 +38,14 @@ describe('Test animal.repository', () => {
     // 2 because spyOn calls it also
     expect(convertJsDateToUnixMock).toHaveBeenCalledTimes(2);
   });
+
+  it('save should return saved animal', () => {
+    const animalRepository = new AnimalRepository();
+
+    const animal = { id: 123, name: 'Animal', dateCreated: 1234 };
+
+    const returnValue = animalRepository.save({ animal });
+
+    expect(returnValue).toEqual(animal);
+  });
 });
