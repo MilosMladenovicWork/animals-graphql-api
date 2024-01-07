@@ -6,10 +6,7 @@ type Animal = {
   dateCreated: number;
 };
 class AnimalRepository {
-  private animals: Animal[] = [
-    { id: 1, name: 'Cat', dateCreated: 1704398763 },
-    { id: 2, name: 'Dog', dateCreated: 1704398763 },
-  ];
+  private animals: Animal[] = [];
 
   findAll(): Animal[] {
     return this.animals;
