@@ -58,4 +58,10 @@ describe('Test animal.repository', () => {
 
     expect(returnValue).toEqual(animalRepository.getAnimals()[0]);
   });
+
+  it('getAnimals should return empty array on repository instantiation', () => {
+    const animalRepository = new AnimalRepository();
+
+    expect(animalRepository.getAnimals()).toEqual([]);
+  });
 });
