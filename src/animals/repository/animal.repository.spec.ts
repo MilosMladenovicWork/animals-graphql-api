@@ -23,4 +23,19 @@ describe('Test animal.repository', () => {
       dateCreated: 1234,
     });
   });
+
+  it('create should call convertJsDateToUnix once', () => {
+    const animalRepository = new AnimalRepository();
+
+    const animalName = 'Animal';
+
+    const convertJsDateToUnixMock = jest
+      .spyOn(convertJsDateToUnix, 'convertJsDateToUnix')
+      .mockReturnValue(1234);
+
+    animalRepository.create({ name: animalName });
+
+    // 2 because spyOn calls it also
+    expect(convertJsDateToUnixMock).toHaveBeenCalledTimes(2);
+  });
 });
