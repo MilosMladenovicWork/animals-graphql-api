@@ -151,6 +151,21 @@ describe('Test animal.repository', () => {
     expect(animalRepository.getAnimals()).toEqual([animal1, animal3]);
   });
 
+  it('updateOne should return null if animal is not found', () => {
+    const animalRepository = new AnimalRepository();
+
+    animalRepository.save({
+      animal: { id: 1, name: 'Animal', dateCreated: 123 },
+    });
+
+    const returnValue = animalRepository.updateOne(
+      { id: 1234 },
+      { name: 'Animal' }
+    );
+
+    expect(returnValue).toEqual(null);
+  });
+
   it('getAnimals should return empty array on repository instantiation', () => {
     const animalRepository = new AnimalRepository();
 
