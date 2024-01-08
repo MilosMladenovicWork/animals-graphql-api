@@ -111,6 +111,20 @@ describe('Test animal.repository', () => {
     expect(deletedAnimal).toEqual(null);
   });
 
+  it('deleteOne should return deleted animal', () => {
+    const animalRepository = new AnimalRepository();
+
+    const animal = { id: 1234, name: 'Animal', dateCreated: 123 };
+
+    animalRepository.save({
+      animal,
+    });
+
+    const deletedAnimal = animalRepository.deleteOne({ id: animal.id });
+
+    expect(deletedAnimal).toEqual(animal);
+  });
+
   it('getAnimals should return empty array on repository instantiation', () => {
     const animalRepository = new AnimalRepository();
 
