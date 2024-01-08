@@ -58,7 +58,7 @@ export class AnimalRepository {
     { id }: { id: number },
     { name }: { name?: string }
   ): Animal | null {
-    if (name === null || name === undefined) {
+    if (name === undefined) {
       return null;
     }
 
