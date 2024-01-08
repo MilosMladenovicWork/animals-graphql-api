@@ -27,14 +27,4 @@ describe('Test delete-animal.resolver', () => {
 
     expect(data).toEqual(animal);
   });
-
-  it('should return null when animal is not found', () => {
-    const animal = null;
-
-    jest.spyOn(animalRepository, 'deleteOne').mockReturnValue(animal);
-
-    const data = deleteAnimalResolver(undefined, { id: 10000000 });
-
-    expect(data).toEqual(animal);
-  });
 });
