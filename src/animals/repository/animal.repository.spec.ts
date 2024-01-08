@@ -103,6 +103,14 @@ describe('Test animal.repository', () => {
     expect(animalRepository.getAnimals()).toEqual([animal1, animal2]);
   });
 
+  it('deleteOne should return null if animal is not found', () => {
+    const animalRepository = new AnimalRepository();
+
+    const deletedAnimal = animalRepository.deleteOne({ id: 1234 });
+
+    expect(deletedAnimal).toEqual(null);
+  });
+
   it('getAnimals should return empty array on repository instantiation', () => {
     const animalRepository = new AnimalRepository();
 
