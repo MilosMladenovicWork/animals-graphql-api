@@ -181,6 +181,38 @@ describe('Test animal.repository', () => {
     expect(returnValue).toEqual(null);
   });
 
+  it('updateOne should update animal and preserve order', () => {
+    const animalRepository = new AnimalRepository();
+
+    const animal1 = { id: 1, name: 'Animal1', dateCreated: 123 };
+
+    animalRepository.save({
+      animal: animal1,
+    });
+
+    const animal2 = { id: 2, name: 'Animal2', dateCreated: 123 };
+
+    animalRepository.save({
+      animal: animal2,
+    });
+
+    const animal3 = { id: 3, name: 'Animal3', dateCreated: 123 };
+
+    animalRepository.save({
+      animal: animal3,
+    });
+
+    const newName = 'Animal2Changed';
+
+    animalRepository.updateOne({ id: animal2.id }, { name: newName });
+
+    expect(animalRepository.getAnimals()).toEqual([
+      animal1,
+      { ...animal2, name: newName },
+      animal3,
+    ]);
+  });
+
   it('getAnimals should return empty array on repository instantiation', () => {
     const animalRepository = new AnimalRepository();
 
