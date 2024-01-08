@@ -36,10 +36,11 @@ describe('Test update-animal.resolver', () => {
   });
 
   it('should throw error if null value is supplied as a name', () => {
-    const data = updateAnimalResolver(undefined, {
-      id: 1,
-      name: null,
-    });
+    const data = () =>
+      updateAnimalResolver(undefined, {
+        id: 1,
+        name: null,
+      });
 
     expect(data).toThrow(new Error());
   });
