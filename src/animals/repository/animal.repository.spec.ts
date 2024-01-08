@@ -125,6 +125,32 @@ describe('Test animal.repository', () => {
     expect(deletedAnimal).toEqual(animal);
   });
 
+  it('deleteOne should delete animal and don`t change order', () => {
+    const animalRepository = new AnimalRepository();
+
+    const animal1 = { id: 1, name: 'Animal1', dateCreated: 123 };
+
+    animalRepository.save({
+      animal: animal1,
+    });
+
+    const animal2 = { id: 2, name: 'Animal2', dateCreated: 123 };
+
+    animalRepository.save({
+      animal: animal2,
+    });
+
+    const animal3 = { id: 3, name: 'Animal3', dateCreated: 123 };
+
+    animalRepository.save({
+      animal: animal3,
+    });
+
+    animalRepository.deleteOne({ id: animal2.id });
+
+    expect(animalRepository.getAnimals()).toEqual([animal1, animal3]);
+  });
+
   it('getAnimals should return empty array on repository instantiation', () => {
     const animalRepository = new AnimalRepository();
 
