@@ -1,3 +1,4 @@
+import { NameShouldBeNonNullValueError } from '../../errors/name-should-be-non-null-value.error';
 import { animalRepository } from '../../repository/animal.repository';
 import { updateAnimalResolver } from './update-animal.resolver';
 
@@ -42,6 +43,6 @@ describe('Test update-animal.resolver', () => {
         name: null,
       });
 
-    expect(data).toThrow(new Error());
+    expect(data).toThrow(new NameShouldBeNonNullValueError());
   });
 });
