@@ -166,6 +166,21 @@ describe('Test animal.repository', () => {
     expect(returnValue).toEqual(null);
   });
 
+  it('updateOne should return null if name is undefined', () => {
+    const animalRepository = new AnimalRepository();
+
+    animalRepository.save({
+      animal: { id: 1, name: 'Animal', dateCreated: 123 },
+    });
+
+    const returnValue = animalRepository.updateOne(
+      { id: 1 },
+      { name: undefined }
+    );
+
+    expect(returnValue).toEqual(null);
+  });
+
   it('getAnimals should return empty array on repository instantiation', () => {
     const animalRepository = new AnimalRepository();
 
