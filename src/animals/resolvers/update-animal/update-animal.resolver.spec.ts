@@ -21,4 +21,17 @@ describe('Test update-animal.resolver', () => {
 
     expect(updateOneMethod).toHaveBeenCalledWith({ id }, { name });
   });
+
+  it('should return value returned from updateOne repository method', () => {
+    const animal = { id: 1, name: 'Animal1', dateCreated: 123 };
+
+    jest.spyOn(animalRepository, 'updateOne').mockReturnValue(animal);
+
+    const data = updateAnimalResolver(undefined, {
+      id: animal.id,
+      name: animal.name,
+    });
+
+    expect(data).toEqual(animal);
+  });
 });
