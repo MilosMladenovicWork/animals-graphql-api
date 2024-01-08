@@ -18,7 +18,7 @@ describe('Test animal.resolver', () => {
     expect(findOneMethod).toHaveBeenCalledWith({ id: 2 });
   });
 
-  it('should return correct animal when id is supplied', () => {
+  it('should return animal returned from findOne repository method', () => {
     const animal = { id: 2, name: 'Animal2', dateCreated: 123 };
 
     jest.spyOn(animalRepository, 'findOne').mockReturnValue(animal);
