@@ -18,7 +18,7 @@ describe('Test delete-animal.resolver', () => {
     expect(deleteOneMethod).toHaveBeenCalledWith({ id: 1 });
   });
 
-  it('should return deleted animal', () => {
+  it('should return value returned from deleteOne repository method', () => {
     const animal = { id: 1, name: 'Animal1', dateCreated: 123 };
 
     jest.spyOn(animalRepository, 'deleteOne').mockReturnValue(animal);
