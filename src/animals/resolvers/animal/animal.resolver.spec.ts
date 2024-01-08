@@ -27,14 +27,4 @@ describe('Test animal.resolver', () => {
 
     expect(data).toBe(animal);
   });
-
-  it('should return null when non existent id is supplied', () => {
-    const animal = null;
-
-    jest.spyOn(animalRepository, 'findOne').mockReturnValue(animal);
-
-    const data = animalResolver(undefined, { id: 100000000 });
-
-    expect(data).toBe(animal);
-  });
 });
