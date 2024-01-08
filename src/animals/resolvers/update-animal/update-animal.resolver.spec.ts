@@ -9,4 +9,16 @@ describe('Test update-animal.resolver', () => {
 
     expect(updateOneMethod).toHaveBeenCalledTimes(1);
   });
+
+  it('should call updateOne repository with passed arguments', () => {
+    const updateOneMethod = jest.spyOn(animalRepository, 'updateOne');
+
+    const id = 1;
+
+    const name = 'Animal';
+
+    updateAnimalResolver(undefined, { id, name });
+
+    expect(updateOneMethod).toHaveBeenCalledWith({ id }, { name });
+  });
 });
